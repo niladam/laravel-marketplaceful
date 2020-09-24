@@ -12,13 +12,13 @@
     @livewire('marketplaceful::users.update-user-form', ['user' => $user])
 
     @if ($user->isActive())
-        <x-jet-section-border />
+        <x-mkt-section-border />
 
         <div class="mt-10 sm:mt-0">
             @livewire('marketplaceful::users.suspend-user-form', ['user' => $user])
         </div>
     @elseif ($user->isSuspended())
-        <x-jet-section-border />
+        <x-mkt-section-border />
 
         <div class="mt-10 sm:mt-0">
             @livewire('marketplaceful::users.un-suspend-user-form', ['user' => $user])

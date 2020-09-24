@@ -101,6 +101,7 @@ class MarketplacefulServiceProvider extends ServiceProvider
             $this->registerComponent('input-error');
             $this->registerComponent('input');
             $this->registerComponent('label');
+            $this->registerComponent('modal');
             $this->registerComponent('multiselect');
             $this->registerComponent('nav-link');
             $this->registerComponent('navbar');
@@ -110,6 +111,7 @@ class MarketplacefulServiceProvider extends ServiceProvider
             $this->registerComponent('role-badge');
             $this->registerComponent('secondary-button');
             $this->registerComponent('section-border');
+            $this->registerComponent('section-title');
             $this->registerComponent('select');
             $this->registerComponent('textarea');
         });

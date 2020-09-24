@@ -1,4 +1,4 @@
-<x-jet-form-section submit="updateUser">
+<x-mkt-form-section submit="updateUser">
     <x-slot name="title">
         Profile Information
     </x-slot>
@@ -23,7 +23,7 @@
                                 reader.readAsDataURL($refs.photo.files[0]);
                         " />
 
-            <x-jet-label for="photo" value="Photo" />
+            <x-mkt-label for="photo" value="Photo" />
 
             <!-- Current Profile Photo -->
             <div class="mt-2" x-show="! photoPreview">
@@ -37,32 +37,32 @@
                 </span>
             </div>
 
-            <x-jet-secondary-button class="mt-2" type="button" x-on:click.prevent="$refs.photo.click()">
+            <x-mkt-secondary-button class="mt-2" type="button" x-on:click.prevent="$refs.photo.click()">
                 Select A New Photo
-            </x-jet-secondary-button>
+            </x-mkt-secondary-button>
 
-            <x-jet-input-error for="photo" class="mt-2" />
+            <x-mkt-input-error for="photo" class="mt-2" />
         </div>
 
         <!-- Name -->
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="name" value="Name" />
-            <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
-            <x-jet-input-error for="name" class="mt-2" />
+            <x-mkt-label for="name" value="Name" />
+            <x-mkt-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
+            <x-mkt-input-error for="name" class="mt-2" />
         </div>
 
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="email" value="Email" />
-            <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
-            <x-jet-input-error for="email" class="mt-2" />
+            <x-mkt-label for="email" value="Email" />
+            <x-mkt-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
+            <x-mkt-input-error for="email" class="mt-2" />
         </div>
 
         <!-- Role -->
         @if (count($this->roles) > 0)
             <div class="col-span-6 lg:col-span-4">
-                <x-jet-label for="role" value="{{ __('Role') }}" />
-                <x-jet-input-error for="role" class="mt-2" />
+                <x-mkt-label for="role" value="{{ __('Role') }}" />
+                <x-mkt-input-error for="role" class="mt-2" />
 
                 <div class="mt-1 border border-gray-200 rounded-lg cursor-pointer">
                     @foreach ($this->roles as $index => $role)
@@ -93,12 +93,12 @@
     </x-slot>
 
     <x-slot name="actions">
-        <x-jet-action-message class="mr-3" on="saved">
+        <x-mkt-action-message class="mr-3" on="saved">
             Saved.
-        </x-jet-action-message>
+        </x-mkt-action-message>
 
-        <x-jet-button>
+        <x-mkt-button>
             Save
-        </x-jet-button>
+        </x-mkt-button>
     </x-slot>
-</x-jet-form-section>
+</x-mkt-form-section>

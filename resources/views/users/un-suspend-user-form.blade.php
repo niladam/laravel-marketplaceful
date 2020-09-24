@@ -1,4 +1,4 @@
-<x-jet-action-section>
+<x-mkt-action-section>
     <x-slot name="title">
         Un-Suspend User
     </x-slot>
@@ -13,13 +13,13 @@
         </div>
 
         <div class="mt-5">
-            <x-jet-danger-button wire:click="$toggle('confirmingUserUnSuspension')" wire:loading.attr="disabled">
+            <x-mkt-danger-button wire:click="$toggle('confirmingUserUnSuspension')" wire:loading.attr="disabled">
                 Un-Suspend User
-            </x-jet-danger-button>
+            </x-mkt-danger-button>
         </div>
 
         <!-- Un-Suspend User Confirmation Modal -->
-        <x-jet-confirmation-modal wire:model="confirmingUserUnSuspension">
+        <x-mkt-confirmation-modal wire:model="confirmingUserUnSuspension">
             <x-slot name="title">
                 Un-Suspend User
             </x-slot>
@@ -29,14 +29,14 @@
             </x-slot>
 
             <x-slot name="footer">
-                <x-jet-secondary-button wire:click="$toggle('confirmingUserUnSuspension')" wire:loading.attr="disabled">
+                <x-mkt-secondary-button wire:click="$toggle('confirmingUserUnSuspension')" wire:loading.attr="disabled">
                     Nevermind
-                </x-jet-secondary-button>
+                </x-mkt-secondary-button>
 
-                <x-jet-danger-button class="ml-2" wire:click="unSuspendUser" wire:loading.attr="disabled">
+                <x-mkt-danger-button class="ml-2" wire:click="unSuspendUser" wire:loading.attr="disabled">
                     Un-Suspend User
-                </x-jet-danger-button>
+                </x-mkt-danger-button>
             </x-slot>
-        </x-jet-confirmation-modal>
+        </x-mkt-confirmation-modal>
     </x-slot>
-</x-jet-action-section>
+</x-mkt-action-section>
