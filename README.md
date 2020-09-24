@@ -1,69 +1,25 @@
-# Laravel Marketplace
+# Initial page
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/marketplaceful/laravel-marketplaceful.svg?style=flat-square)](https://packagist.org/packages/marketplaceful/laravel-marketplaceful)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/marketplaceful/laravel-marketplaceful/run-tests?label=tests)](https://github.com/marketplaceful/laravel-marketplaceful/actions?query=workflow%3Arun-tests+branch%3Amaster)
-[![Total Downloads](https://img.shields.io/packagist/dt/marketplaceful/laravel-marketplaceful.svg?style=flat-square)](https://packagist.org/packages/marketplaceful/laravel-marketplaceful)
+## Getting Super Powers
 
+Becoming a super hero is a fairly straight forward process:
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+```
+$ give me super-powers
+```
 
-## Installation
+{% hint style="info" %}
+ Super-powers are granted randomly so please submit an issue if you're not happy with yours.
+{% endhint %}
 
-You can install the package via composer:
+Once you're strong enough, save the world:
 
+{% code title="hello.sh" %}
 ```bash
-composer require marketplaceful/laravel-marketplaceful
+# Ain't no code for that yet, sorry
+echo 'You got to trust me on this, I saved the world'
 ```
+{% endcode %}
 
-You can publish and run the migrations with:
 
-```bash
-php artisan vendor:publish --provider="Marketplaceful\MarketplacefulServiceProvider" --tag="migrations"
-php artisan migrate
-```
 
-You can publish the config file with:
-```bash
-php artisan vendor:publish --provider="Marketplaceful\MarketplacefulServiceProvider" --tag="config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-## Usage
-
-``` php
-$marketplaceful = new Marketplaceful\Marketplaceful();
-echo $marketplaceful->echoPhrase('Hello, Marketplaceful!');
-```
-
-## Testing
-
-``` bash
-composer test
-```
-
-## Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
-
-## Security Vulnerabilities
-
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
-
-## Credits
-
-- [Oliver Jiménez-Servín](https://github.com/oliverds)
-- [All Contributors](../../contributors)
-
-## License
-
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
