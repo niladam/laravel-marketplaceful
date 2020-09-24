@@ -20,7 +20,7 @@ class UpdateListing
         if (isset($input['tags'])) {
             $listing->tags()->sync(
                 collect($input['tags'])->mapWithKeys(
-                    fn($tag, $key) => [$tag => ['order_column' => $key + 1]]
+                    fn ($tag, $key) => [$tag => ['order_column' => $key + 1]]
                 )
             );
         }

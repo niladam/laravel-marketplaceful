@@ -2,12 +2,10 @@
 
 namespace Marketplaceful\Http\Livewire;
 
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Marketplaceful\Actions\CreateListing;
-use Marketplaceful\Actions\CreateTag;
 use Marketplaceful\Models\Tag;
 
 class CreateListingForm extends Component
