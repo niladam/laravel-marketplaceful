@@ -20,7 +20,7 @@
         "illuminate/contracts": "^8.0",
         "laravel/sanctum": "^2.6",
         "livewire/livewire": "^2.0",
-        "radiocubito/laravel-package-tools": "dev-master"
+        "radiocubito/laravel-package-tools": "^1.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16",
@@ -62,11 +62,5 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "repositories": {
-        "local": {
-            "type": "path",
-            "url": "../laravel-package-tools"
-        }
-    }
+    "prefer-stable": true
 }
