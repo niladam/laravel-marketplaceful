@@ -1,12 +1,12 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Validation\ValidationException;
 use Marketplaceful\Actions\CreateTag;
 use Marketplaceful\Models\Tag;
+use Marketplaceful\Tests\Fixtures\User;
 
-uses(Tests\TestCase::class);
+// uses(Marketplaceful\Tests\TestCase::class);
 
 uses(RefreshDatabase::class);
 

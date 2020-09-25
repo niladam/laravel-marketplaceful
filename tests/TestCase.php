@@ -3,12 +3,14 @@
 namespace Marketplaceful\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 use Marketplaceful\MarketplacefulServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -33,9 +35,19 @@ class TestCase extends Orchestra
             'prefix' => '',
         ]);
 
-        /*
-        include_once __DIR__.'/../database/migrations/create_marketplaceful_table.php.stub';
-        (new \CreatePackageTable())->up();
-        */
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
+        });
+
+        include_once __DIR__.'/../database/migrations/2020_09_08_172241_create_member_columns.php';
+        include_once __DIR__.'/../database/migrations/2020_09_09_214440_create_tags_table.php';
+        (new \CreateMemberColumns())->up();
+        (new \CreateTagsTable())->up();
     }
 }

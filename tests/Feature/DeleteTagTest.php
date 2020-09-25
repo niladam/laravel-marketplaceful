@@ -1,11 +1,11 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Marketplaceful\Actions\CreateTag;
 use Marketplaceful\Actions\DeleteTag;
+use Marketplaceful\Tests\Fixtures\User;
 
-uses(Tests\TestCase::class);
+// uses(Marketplaceful\Tests\TestCase::class);
 
 uses(RefreshDatabase::class);
 
