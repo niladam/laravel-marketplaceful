@@ -14,7 +14,7 @@ class UpdateUser
      * @param  array  $input
      * @return void
      */
-    public function update($user, array $input)
+    public function update(Authenticatable $user, array $input)
     {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],

@@ -2,11 +2,10 @@
 
 namespace Marketplaceful\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Marketplaceful\Models\Tag;
 
-class TagController extends Controller
+class TagController
 {
     public function index()
     {

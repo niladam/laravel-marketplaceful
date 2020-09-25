@@ -28,6 +28,6 @@ class Hex implements Rule
 
     public function message()
     {
-        return __('The :attribute must be a valid color.');
+        return __('The :attribute must be a valid color.') ?? '';
     }
 }

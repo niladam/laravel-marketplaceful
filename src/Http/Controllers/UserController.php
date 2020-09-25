@@ -2,16 +2,20 @@
 
 namespace Marketplaceful\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class UserController
 {
     public function index()
     {
-        $activeUsers = User::active()->orderBy('name')->get();
-        $suspendedUsers = User::suspended()->orderBy('name')->get();
+        /**
+         * @psalm-suppress UndefinedMethod
+        */
+        $activeUsers = config('auth.providers.users.model')::active()->orderBy('name')->get();
+        /**
+         * @psalm-suppress UndefinedMethod
+        */
+        $suspendedUsers = config('auth.providers.users.model')::suspended()->orderBy('name')->get();
 
         return view('marketplaceful::users.index', [
             'activeUsers' => $activeUsers,
@@ -21,7 +25,10 @@ class UserController extends Controller
 
     public function show(Request $request, $userId)
     {
-        $user = User::findOrFail($userId);
+        /**
+         * @psalm-suppress UndefinedMethod
+        */
+        $user = config('auth.providers.users.model')::findOrFail($userId);
 
         return view('marketplaceful::users.show', [
             'user' => $user,

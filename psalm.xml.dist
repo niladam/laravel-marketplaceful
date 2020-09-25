@@ -13,4 +13,23 @@
             <directory name="vendor"/>
         </ignoreFiles>
     </projectFiles>
-</psalm>
+
+    <issueHandlers>
+        <UndefinedInterfaceMethod>
+            <errorLevel type="info">
+                <referencedMethod name="Illuminate\Contracts\Validation\Validator::validateWithBag" />
+            </errorLevel>
+            <errorLevel type="info">
+                <referencedMethod name="Illuminate\Contracts\Auth\Authenticatable::forceFill" />
+            </errorLevel>
+            <errorLevel type="info">
+                <referencedMethod name="Illuminate\Contracts\Filesystem\Filesystem::url" />
+            </errorLevel>
+        </UndefinedInterfaceMethod>
+        <NoInterfaceProperties>
+            <errorLevel type="info">
+                <file name="src/Http/Middleware/UpdateUserLastSeenMiddleware.php" />
+            </errorLevel>
+        </NoInterfaceProperties>
+    </issueHandlers>
+<plugins><pluginClass class="Psalm\LaravelPlugin\Plugin"/></plugins></psalm>

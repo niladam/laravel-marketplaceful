@@ -2,11 +2,10 @@
 
 namespace Marketplaceful\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Marketplaceful\Models\Listing;
 
-class ListingController extends Controller
+class ListingController
 {
     public function index()
     {

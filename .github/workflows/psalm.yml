@@ -6,7 +6,7 @@ on:
       - '**.php'
       - 'psalm.xml.dist'
     branches-ignore:
-      - '**'
+      # - '**'
 
 jobs:
   psalm:
