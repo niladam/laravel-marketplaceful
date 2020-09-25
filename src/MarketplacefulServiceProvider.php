@@ -24,34 +24,6 @@ use Marketplaceful\Http\Livewire\UserList;
 
 class MarketplacefulServiceProvider extends ServiceProvider
 {
-    public function boot()
-    {
-        if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__ . '/../config/marketplaceful.php' => config_path('marketplaceful.php'),
-            ], 'config');
-
-            $this->publishes([
-                __DIR__ . '/../resources/views' => base_path('resources/views/vendor/marketplaceful'),
-            ], 'views');
-
-            $migrationFileName = 'create_marketplaceful_table.php';
-            if (! $this->migrationFileExists($migrationFileName)) {
-                $this->publishes([
-                    __DIR__ . "/../database/migrations/{$migrationFileName}.stub" => database_path('migrations/' . date('Y_m_d_His', time()) . '_' . $migrationFileName),
-                ], 'migrations');
-            }
-
-            $this->commands([
-                MarketplacefulCommand::class,
-            ]);
-        }
-
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'marketplaceful');
-
-        $this->configureComponents();
-    }
-
     public function register()
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/marketplaceful.php', 'marketplaceful');
@@ -74,16 +46,14 @@ class MarketplacefulServiceProvider extends ServiceProvider
         });
     }
 
-    public static function migrationFileExists(string $migrationFileName): bool
+    public function boot()
     {
-        $len = strlen($migrationFileName);
-        foreach (glob(database_path("migrations/*.php")) as $filename) {
-            if ((substr($filename, -$len) === $migrationFileName)) {
-                return true;
-            }
-        }
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'marketplaceful');
 
-        return false;
+        $this->configureComponents();
+        $this->configurePublishing();
+        $this->configureRoutes();
+        $this->configureCommands();
     }
 
     protected function configureComponents()
@@ -120,5 +90,59 @@ class MarketplacefulServiceProvider extends ServiceProvider
     protected function registerComponent(string $component)
     {
         Blade::component('marketplaceful::components.'.$component, 'mkt-'.$component);
+    }
+
+    protected function configurePublishing()
+    {
+        if (! $this->app->runningInConsole()) {
+            return;
+        }
+
+        $this->publishes([
+            __DIR__ . '/../config/marketplaceful.php' => config_path('marketplaceful.php'),
+        ], 'config');
+
+        $this->publishes([
+            __DIR__ . '/../resources/views' => base_path('resources/views/vendor/marketplaceful'),
+        ], 'views');
+
+        $migrationFileName = 'create_marketplaceful_table.php';
+        if (! $this->migrationFileExists($migrationFileName)) {
+            $this->publishes([
+                __DIR__ . "/../database/migrations/{$migrationFileName}.stub" => database_path('migrations/' . date('Y_m_d_His', time()) . '_' . $migrationFileName),
+            ], 'migrations');
+        }
+
+        // $this->publishes([
+        //     __DIR__.'/../routes/web.php' => base_path('routes/marketplaceful.php'),
+        // ], 'routes');
+    }
+
+    public static function migrationFileExists(string $migrationFileName): bool
+    {
+        $len = strlen($migrationFileName);
+        foreach (glob(database_path("migrations/*.php")) as $filename) {
+            if ((substr($filename, -$len) === $migrationFileName)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    protected function configureRoutes()
+    {
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+    }
+
+    protected function configureCommands()
+    {
+        if (! $this->app->runningInConsole()) {
+            return;
+        }
+
+        $this->commands([
+            MarketplacefulCommand::class,
+        ]);
     }
 }

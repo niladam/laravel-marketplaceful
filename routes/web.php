@@ -11,7 +11,7 @@ use Marketplaceful\Http\Livewire\ShowTag;
 use Marketplaceful\Http\Livewire\TagIndex;
 use Marketplaceful\Http\Middleware\UpdateUserLastSeenMiddleware;
 
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => 'web'], function () {
     Route::group(['middleware' => ['auth', 'verified', UpdateUserLastSeenMiddleware::class]], function () {
         Route::get('/marketplaceful/tags', [TagController::class, 'index'])->name('marketplaceful::tags.index');
         Route::get('/marketplaceful/tags/create', [TagController::class, 'create'])->name('marketplaceful::tags.create');

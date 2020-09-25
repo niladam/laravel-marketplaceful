@@ -19,7 +19,8 @@
         "php": "^7.4",
         "illuminate/contracts": "^8.0",
         "laravel/sanctum": "^2.6",
-        "livewire/livewire": "^2.0"
+        "livewire/livewire": "^2.0",
+        "radiocubito/laravel-package-tools": "dev-master"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16",
@@ -44,7 +45,8 @@
         "psalm": "vendor/bin/psalm",
         "test": "vendor/bin/pest --colors=always",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
-        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes",
+        "pkg-tools": "vendor/bin/pkg-tools"
     },
     "config": {
         "sort-packages": true
@@ -60,5 +62,11 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": {
+        "local": {
+            "type": "path",
+            "url": "../laravel-package-tools"
+        }
+    }
 }
