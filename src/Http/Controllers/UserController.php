@@ -11,11 +11,11 @@ class UserController
         /**
          * @psalm-suppress UndefinedMethod
         */
-        $activeUsers = config('auth.providers.users.model')::active()->orderBy('name')->get();
+        $activeUsers = config('marketplaceful.user_model')::active()->orderBy('name')->get();
         /**
          * @psalm-suppress UndefinedMethod
         */
-        $suspendedUsers = config('auth.providers.users.model')::suspended()->orderBy('name')->get();
+        $suspendedUsers = config('marketplaceful.user_model')::suspended()->orderBy('name')->get();
 
         return view('marketplaceful::users.index', [
             'activeUsers' => $activeUsers,
