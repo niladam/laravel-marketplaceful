@@ -47,7 +47,9 @@ class TestCase extends Orchestra
 
         include_once __DIR__.'/../database/migrations/2020_09_08_172241_create_member_columns.php';
         include_once __DIR__.'/../database/migrations/2020_09_09_214440_create_tags_table.php';
+        include_once __DIR__.'/../database/migrations/2020_09_17_234651_create_listings_table.php';
         (new \CreateMemberColumns())->up();
         (new \CreateTagsTable())->up();
+        (new \CreateListingsTable())->up();
     }
 }
