@@ -12,7 +12,7 @@ uses(RefreshDatabase::class);
 
 beforeEach(function () {
     $this->user = User::forceCreate([
-        'name' => 'Oliver Jiménez Servín',
+        'name' => 'Oliver Jiménez-Servín',
         'email' => 'oliver@radiocubito.com',
         'password' => 'secret',
     ]);
