@@ -12,10 +12,15 @@ class UpdateListing
 
         Validator::make($input, [
             'title' => ['required', 'string', 'max:255'],
+            'price' => ['nullable', 'numeric'],
             'description' => ['nullable', 'string', 'max:1000000000'],
             'tags' => ['nullable', 'sometimes', 'array'],
             'tags.*' => ['nullable', 'sometimes', 'exists:tags,id'],
         ])->validateWithBag('updateListing');
+
+        if (isset($input['image'])) {
+            $listing->updateFeatureImage($input['image']);
+        }
 
         if (isset($input['tags'])) {
             $listing->tags()->sync(
@@ -28,6 +33,7 @@ class UpdateListing
         $listing->forceFill([
             'title' => $input['title'],
             'description' => $input['description'],
+            'price_for_computers' => $input['price'] ?? null,
         ])->save();
     }
 }

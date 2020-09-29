@@ -4,18 +4,13 @@ namespace Marketplaceful\Http\Livewire;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use Livewire\WithFileUploads;
 use Marketplaceful\Actions\UpdateTag;
 
 class UpdateTagForm extends Component
 {
-    use WithFileUploads;
-
     public $tag;
 
     public $state = [];
-
-    public $image;
 
     public function mount($tag)
     {
@@ -32,14 +27,8 @@ class UpdateTagForm extends Component
         $updater->update(
             Auth::user(),
             $this->tag,
-            $this->image
-                ? array_merge($this->state, ['image' => $this->image])
-                : $this->state,
+            $this->state,
         );
-
-        if (isset($this->image)) {
-            return redirect()->route('marketplaceful::tags.show', ['tag' => $this->tag]);
-        }
 
         $this->emit('saved');
     }

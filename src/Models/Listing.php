@@ -4,6 +4,7 @@ namespace Marketplaceful\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Marketplaceful\Traits\HasFeatureImage;
 use Marketplaceful\Traits\HasSlug;
 use Marketplaceful\Traits\Unguarded;
 
@@ -12,6 +13,7 @@ class Listing extends Model
     use HasFactory;
     use HasSlug;
     use Unguarded;
+    use HasFeatureImage;
 
     public function sluggableAttribute()
     {
@@ -30,5 +32,19 @@ class Listing extends Model
         return $query->whereHas('tags', function ($query) use ($slug) {
             $query->where('slug', $slug);
         });
+    }
+
+    public function getPriceForHumansAttribute()
+    {
+        return number_format($this->price / 100, 2);
+    }
+
+    public function setPriceForComputersAttribute($value)
+    {
+        $value = str_replace(',', '.', $value);
+
+        $price = number_format(floatval($value) * 100, 0, '', '');
+
+        $this->price = $price;
     }
 }

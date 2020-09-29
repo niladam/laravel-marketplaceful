@@ -20,12 +20,8 @@ class CreateListingsTable extends Migration
             $table->string('slug')->unique();
             $table->text('description')->nullable();
             $table->integer('price')->nullable();
-            $table->text('custom_excerpt')->nullable();
             $table->text('feature_image_path')->nullable();
-            $table->json('gallery_image_paths')->nullable();
-            $table->boolean('featured')->default(false);
             $table->string('status', 50)->default('draft');
-            $table->string('visibility', 50)->default('public');
             $table->dateTime('published_at')->nullable();
             $table->timestamps();
         });

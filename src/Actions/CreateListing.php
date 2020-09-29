@@ -11,16 +11,23 @@ class CreateListing
     {
         Validator::make($input, [
             'title' => ['required', 'string', 'max:255'],
+            'price' => ['nullable', 'numeric'],
+            'image' => ['nullable', 'image', 'max:1024'],
             'description' => ['nullable', 'string', 'max:1000000000'],
-            'tags' => ['nullable', 'sometimes', 'array'],
-            'tags.*' => ['nullable', 'sometimes', 'exists:tags,id'],
+            'tags' => ['nullable', 'array'],
+            'tags.*' => ['nullable', 'exists:tags,id'],
         ])->validateWithBag('createTag');
 
         $listing = Listing::create([
             'author_id' => $user->id,
             'title' => $input['title'],
             'description' => $input['description'] ?? null,
+            'price_for_computers' => $input['price'] ?? null,
         ]);
+
+        if (isset($input['image'])) {
+            $listing->updateFeatureImage($input['image']);
+        }
 
         if (isset($input['tags'])) {
             $listing->tags()->sync(

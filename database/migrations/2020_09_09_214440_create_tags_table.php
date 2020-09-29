@@ -12,10 +12,6 @@ class CreateTagsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('slug')->unique();
-            $table->string('color')->nullable();
-            $table->text('description')->nullable();
-            $table->string('type')->nullable();
-            $table->text('feature_image_path')->nullable();
             $table->timestamps();
         });
 

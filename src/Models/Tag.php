@@ -5,7 +5,6 @@ namespace Marketplaceful\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Marketplaceful\Database\Factories\TagFactory;
-use Marketplaceful\Traits\HasFeatureImage;
 use Marketplaceful\Traits\HasSlug;
 use Marketplaceful\Traits\Unguarded;
 
@@ -13,7 +12,6 @@ class Tag extends Model
 {
     use HasFactory;
     use HasSlug;
-    use HasFeatureImage;
     use Unguarded;
 
     protected static function newFactory()

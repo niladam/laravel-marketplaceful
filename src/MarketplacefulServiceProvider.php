@@ -17,7 +17,6 @@ use Marketplaceful\Http\Livewire\SuspendUserForm;
 use Marketplaceful\Http\Livewire\TagList;
 use Marketplaceful\Http\Livewire\UnSuspendUserForm;
 use Marketplaceful\Http\Livewire\UpdateListingForm;
-use Marketplaceful\Http\Livewire\UpdateListingPriceForm;
 use Marketplaceful\Http\Livewire\UpdateTagForm;
 use Marketplaceful\Http\Livewire\UpdateUserForm;
 use Marketplaceful\Http\Livewire\UserList;
@@ -36,7 +35,6 @@ class MarketplacefulServiceProvider extends ServiceProvider
             Livewire::component('marketplaceful::listings.listing-list', ListingList::class);
             Livewire::component('marketplaceful::listings.create-listing-form', CreateListingForm::class);
             Livewire::component('marketplaceful::listings.update-listing-form', UpdateListingForm::class);
-            Livewire::component('marketplaceful::listings.update-listing-price-form', UpdateListingPriceForm::class);
             Livewire::component('marketplaceful::listings.delete-listing-form', DeleteListingForm::class);
             Livewire::component('marketplaceful::users.user-list', UserList::class);
             Livewire::component('marketplaceful::users.update-user-form', UpdateUserForm::class);

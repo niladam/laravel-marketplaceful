@@ -14,6 +14,8 @@ class CreateListingForm extends Component
 
     public $state = [];
 
+    public $image;
+
     public $tags;
 
     public $currentTags = [];
@@ -24,7 +26,9 @@ class CreateListingForm extends Component
 
         $creator->create(
             Auth::user(),
-            array_merge($this->state, ['tags' => $this->currentTags]),
+            $this->image
+                ? array_merge($this->state, ['image' => $this->image, 'tags' => $this->currentTags])
+                : array_merge($this->state, ['tags' => $this->currentTags]),
         );
 
         return redirect(route('marketplaceful::listings.index'));

@@ -14,9 +14,57 @@
             <x-mkt-input-error for="title" class="mt-2" />
         </div>
 
+        <div class="col-span-6 sm:col-span-4">
+            <x-mkt-label for="price" value="Price" />
+            <div class="mt-1 relative rounded-md shadow-sm">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <span class="text-gray-500">
+                        $
+                    </span>
+                </div>
+                <input wire:model.defer="state.price" id="price" class="form-input block w-full pl-7 pr-12" placeholder="0.00" step="0.01" type="number" />
+                <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                    <span class="text-gray-500">
+                        USD
+                    </span>
+                </div>
+            </div>
+            <x-mkt-input-error for="price" class="mt-2" />
+        </div>
+
+        <div x-data="{imageName: null, imagePreview: null}" class="col-span-6 sm:col-span-6">
+            <!-- Feature Image File Input -->
+            <input type="file" class="hidden"
+                        wire:model="image"
+                        x-ref="image"
+                        x-on:change="
+                                imageName = $refs.image.files[0].name;
+                                const reader = new FileReader();
+                                reader.onload = (e) => {
+                                    imagePreview = e.target.result;
+                                };
+                                reader.readAsDataURL($refs.image.files[0]);
+                        " />
+
+            <x-mkt-label for="image" value="Image" />
+
+            <!-- New Feature Image Preview -->
+            <div class="mt-2" x-show="imagePreview">
+                <span class="block rounded h-40"
+                      x-bind:style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + imagePreview + '\');'">
+                </span>
+            </div>
+
+            <x-mkt-secondary-button class="mt-2" type="button" x-on:click.prevent="$refs.image.click()">
+                Select A New Image
+            </x-mkt-secondary-button>
+
+            <x-mkt-input-error for="image" class="mt-2" />
+        </div>
+
         <div class="col-span-6">
             <x-mkt-label for="description" value="Description" />
-            <x-mkt-textarea id="description" class="mt-1 block w-full" wire:model.defer="state.description" />
+            <x-mkt-textarea id="description" rows="3" class="mt-1 block w-full" wire:model.defer="state.description" />
             <x-mkt-input-error for="description" class="mt-2" />
         </div>
 

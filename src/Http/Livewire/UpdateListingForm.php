@@ -4,14 +4,19 @@ namespace Marketplaceful\Http\Livewire;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Marketplaceful\Actions\UpdateListing;
 use Marketplaceful\Models\Tag;
 
 class UpdateListingForm extends Component
 {
+    use WithFileUploads;
+
     public $listing;
 
     public $state = [];
+
+    public $image;
 
     public $tags;
 
@@ -22,6 +27,8 @@ class UpdateListingForm extends Component
         $this->listing = $listing;
 
         $this->state = $listing->withoutRelations()->toArray();
+
+        $this->state['price'] = $listing->priceForHumans;
 
         $this->currentTags = $listing->tags->pluck('id')->toArray();
 
@@ -35,8 +42,14 @@ class UpdateListingForm extends Component
         $updater->update(
             Auth::user(),
             $this->listing,
-            array_merge($this->state, ['tags' => $this->currentTags]),
+            $this->image
+                ? array_merge($this->state, ['image' => $this->image, 'tags' => $this->currentTags])
+                : array_merge($this->state, ['tags' => $this->currentTags]),
         );
+
+        if (isset($this->image)) {
+            return redirect()->route('marketplaceful::listings.show', ['listing' => $this->listing]);
+        }
 
         $this->emit('saved');
     }
