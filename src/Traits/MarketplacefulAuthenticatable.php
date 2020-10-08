@@ -2,8 +2,15 @@
 
 namespace Marketplaceful\Traits;
 
+use Marketplaceful\Models\Conversation;
+
 trait MarketplacefulAuthenticatable
 {
+    public function initializeMarketplacefulAuthenticatable()
+    {
+        $this->casts['last_seen_at'] = 'datetime';
+    }
+
     public function scopeActive($query)
     {
         return $query->where('status', 'active');
@@ -22,5 +29,29 @@ trait MarketplacefulAuthenticatable
     public function isSuspended()
     {
         return $this->status == 'inactive';
+    }
+
+    public function inConversation($id)
+    {
+        return $this->conversations->contains('id', $id);
+    }
+
+    public function hasRead(Conversation $conversation)
+    {
+        return $this->conversations->find($conversation->id)->pivot->read_at;
+    }
+
+    public function conversations()
+    {
+        return $this->belongsToMany(Conversation::class)->withPivot('read_at');
+    }
+
+    public function getConversationNameAttribute()
+    {
+        if ($this->id === auth()->id()) {
+            return 'You';
+        }
+
+        return $this->name;
     }
 }

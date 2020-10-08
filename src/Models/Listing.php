@@ -20,6 +20,11 @@ class Listing extends Model
         return 'title';
     }
 
+    public function author()
+    {
+        return $this->belongsTo(config('marketplaceful.user_model'));
+    }
+
     public function tags()
     {
         return $this->belongsToMany(Tag::class, 'listings_tags', 'listing_id', 'tag_id')
