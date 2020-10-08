@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 use Livewire\Livewire;
-use Marketplaceful\Commands\MarketplacefulCommand;
+use Marketplaceful\Console\InstallCommand;
 use Marketplaceful\Http\Livewire\CreateListingForm;
 use Marketplaceful\Http\Livewire\CreateTagForm;
 use Marketplaceful\Http\Livewire\DeleteListingForm;
@@ -98,34 +98,23 @@ class MarketplacefulServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__ . '/../config/marketplaceful.php' => config_path('marketplaceful.php'),
-        ], 'config');
+        ], 'marketplaceful-config');
 
         $this->publishes([
             __DIR__ . '/../resources/views' => base_path('resources/views/vendor/marketplaceful'),
-        ], 'views');
+        ], 'marketplaceful-views');
 
-        $migrationFileName = 'create_marketplaceful_table.php';
-        if (! $this->migrationFileExists($migrationFileName)) {
-            $this->publishes([
-                __DIR__ . "/../database/migrations/{$migrationFileName}.stub" => database_path('migrations/' . date('Y_m_d_His', time()) . '_' . $migrationFileName),
-            ], 'migrations');
-        }
+        $this->publishes([
+            __DIR__.'/../database/migrations' => database_path('migrations'),
+        ], 'marketplaceful-migrations');
 
-        // $this->publishes([
-        //     __DIR__.'/../routes/web.php' => base_path('routes/marketplaceful.php'),
-        // ], 'routes');
-    }
+        $this->publishes([
+            __DIR__.'/../routes/web.php' => base_path('routes/marketplaceful.php'),
+        ], 'marketplaceful-routes');
 
-    public static function migrationFileExists(string $migrationFileName): bool
-    {
-        $len = strlen($migrationFileName);
-        foreach (glob(database_path("migrations/*.php")) as $filename) {
-            if ((substr($filename, -$len) === $migrationFileName)) {
-                return true;
-            }
-        }
-
-        return false;
+        $this->publishes([
+            __DIR__.'/../resources/dist' => public_path('vendor/marketplaceful/dashboard'),
+        ], 'marketplaceful-dashboard');
     }
 
     protected function configureRoutes()
@@ -140,7 +129,7 @@ class MarketplacefulServiceProvider extends ServiceProvider
         }
 
         $this->commands([
-            MarketplacefulCommand::class,
+            InstallCommand::class,
         ]);
     }
 }
