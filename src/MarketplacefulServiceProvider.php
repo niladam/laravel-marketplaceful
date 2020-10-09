@@ -3,6 +3,7 @@
 namespace Marketplaceful;
 
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 use Livewire\Livewire;
@@ -52,6 +53,7 @@ class MarketplacefulServiceProvider extends ServiceProvider
         $this->configurePublishing();
         $this->configureRoutes();
         $this->configureCommands();
+        $this->configureGate();
     }
 
     protected function configureComponents()
@@ -131,5 +133,10 @@ class MarketplacefulServiceProvider extends ServiceProvider
         $this->commands([
             InstallCommand::class,
         ]);
+    }
+
+    protected function configureGate()
+    {
+        Gate::define('viewMarketplaceful', fn ($user = null) => app()->environment('local'));
     }
 }
