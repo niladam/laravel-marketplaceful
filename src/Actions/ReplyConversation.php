@@ -3,9 +3,6 @@
 namespace Marketplaceful\Actions;
 
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
-use Marketplaceful\Models\Conversation;
-use Marketplaceful\Models\Listing;
 
 class ReplyConversation
 {
