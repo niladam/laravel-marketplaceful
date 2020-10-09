@@ -9,5 +9,5 @@
         </x-mkt-page-header>
     </x-slot>
 
-    @livewire('marketplaceful::listings.create-listing-form')
+    <livewire:marketplaceful::listings.create-listing-form />
 </x-mkt-dashboard-layout>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Marketplaceful\Http\Livewire;
+namespace Marketplaceful\Http\Livewire\Tags;
 
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
@@ -16,6 +16,6 @@ class TagList extends Component
 
     public function render()
     {
-        return view('marketplaceful::tags.tag-list');
+        return view('marketplaceful::livewire.tags.tag-list');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Marketplaceful\Http\Livewire;
+namespace Marketplaceful\Http\Livewire\Tags;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -40,6 +40,6 @@ class UpdateTagForm extends Component
 
     public function render()
     {
-        return view('marketplaceful::tags.update-tag-form');
+        return view('marketplaceful::livewire.tags.update-tag-form');
     }
 }

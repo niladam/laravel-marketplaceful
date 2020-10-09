@@ -1,6 +1,6 @@
 <?php
 
-namespace Marketplaceful\Http\Livewire;
+namespace Marketplaceful\Http\Livewire\Listings;
 
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
@@ -17,6 +17,6 @@ class ListingList extends Component
 
     public function render()
     {
-        return view('marketplaceful::listings.listing-list');
+        return view('marketplaceful::livewire.listings.listing-list');
     }
 }

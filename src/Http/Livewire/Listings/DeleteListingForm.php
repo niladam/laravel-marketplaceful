@@ -1,6 +1,6 @@
 <?php
 
-namespace Marketplaceful\Http\Livewire;
+namespace Marketplaceful\Http\Livewire\Listings;
 
 use Livewire\Component;
 use Marketplaceful\Actions\DeleteListing;
@@ -25,6 +25,6 @@ class DeleteListingForm extends Component
 
     public function render()
     {
-        return view('marketplaceful::listings.delete-listing-form');
+        return view('marketplaceful::livewire.listings.delete-listing-form');
     }
 }

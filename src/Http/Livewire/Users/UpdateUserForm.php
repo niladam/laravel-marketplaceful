@@ -1,6 +1,6 @@
 <?php
 
-namespace Marketplaceful\Http\Livewire;
+namespace Marketplaceful\Http\Livewire\Users;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -44,6 +44,6 @@ class UpdateUserForm extends Component
 
     public function render()
     {
-        return view('marketplaceful::users.update-user-form');
+        return view('marketplaceful::livewire.users.update-user-form');
     }
 }

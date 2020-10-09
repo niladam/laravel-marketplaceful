@@ -1,6 +1,6 @@
 <?php
 
-namespace Marketplaceful\Http\Livewire;
+namespace Marketplaceful\Http\Livewire\Users;
 
 use Livewire\Component;
 use Marketplaceful\Actions\UnSuspendUser;
@@ -25,6 +25,6 @@ class UnSuspendUserForm extends Component
 
     public function render()
     {
-        return view('marketplaceful::users.un-suspend-user-form');
+        return view('marketplaceful::livewire.users.un-suspend-user-form');
     }
 }

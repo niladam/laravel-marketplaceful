@@ -9,5 +9,5 @@
         </x-mkt-page-header>
     </x-slot>
 
-    @livewire('marketplaceful::tags.create-tag-form')
+    <livewire:marketplaceful::tags.create-tag-form />
 </x-mkt-dashboard-layout>

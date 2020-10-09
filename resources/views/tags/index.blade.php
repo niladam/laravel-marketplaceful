@@ -17,5 +17,5 @@
         </x-mkt-page-header>
     </x-slot>
 
-    @livewire('marketplaceful::tags.tag-list', ['tags' => $tags])
+    <livewire:marketplaceful::tags.tag-list :tags="$tags" />
 </x-mkt-dashboard-layout>

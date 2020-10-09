@@ -7,19 +7,19 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 use Livewire\Livewire;
 use Marketplaceful\Console\InstallCommand;
-use Marketplaceful\Http\Livewire\CreateListingForm;
-use Marketplaceful\Http\Livewire\CreateTagForm;
-use Marketplaceful\Http\Livewire\DeleteListingForm;
-use Marketplaceful\Http\Livewire\DeleteTagForm;
-use Marketplaceful\Http\Livewire\DeleteUserForm;
-use Marketplaceful\Http\Livewire\ListingList;
-use Marketplaceful\Http\Livewire\SuspendUserForm;
-use Marketplaceful\Http\Livewire\TagList;
-use Marketplaceful\Http\Livewire\UnSuspendUserForm;
-use Marketplaceful\Http\Livewire\UpdateListingForm;
-use Marketplaceful\Http\Livewire\UpdateTagForm;
-use Marketplaceful\Http\Livewire\UpdateUserForm;
-use Marketplaceful\Http\Livewire\UserList;
+use Marketplaceful\Http\Livewire\Listings\CreateListingForm;
+use Marketplaceful\Http\Livewire\Listings\DeleteListingForm;
+use Marketplaceful\Http\Livewire\Listings\ListingList;
+use Marketplaceful\Http\Livewire\Listings\UpdateListingForm;
+use Marketplaceful\Http\Livewire\Tags\CreateTagForm;
+use Marketplaceful\Http\Livewire\Tags\DeleteTagForm;
+use Marketplaceful\Http\Livewire\Tags\TagList;
+use Marketplaceful\Http\Livewire\Tags\UpdateTagForm;
+use Marketplaceful\Http\Livewire\Users\DeleteUserForm;
+use Marketplaceful\Http\Livewire\Users\SuspendUserForm;
+use Marketplaceful\Http\Livewire\Users\UnSuspendUserForm;
+use Marketplaceful\Http\Livewire\Users\UpdateUserForm;
+use Marketplaceful\Http\Livewire\Users\UserList;
 
 class MarketplacefulServiceProvider extends ServiceProvider
 {

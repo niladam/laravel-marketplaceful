@@ -9,11 +9,11 @@
         </x-mkt-page-header>
     </x-slot>
 
-    @livewire('marketplaceful::listings.update-listing-form', ['listing' => $listing])
+    <livewire:marketplaceful::listings.update-listing-form :listing="$listing" />
 
     <x-mkt-section-border />
 
     <div class="mt-10 sm:mt-0">
-        @livewire('marketplaceful::listings.delete-listing-form', ['listing' => $listing])
+        <livewire:marketplaceful::listings.delete-listing-form :listing="$listing" />
     </div>
 </x-mkt-dashboard-layout>

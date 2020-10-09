@@ -1,6 +1,6 @@
 <?php
 
-namespace Marketplaceful\Http\Livewire;
+namespace Marketplaceful\Http\Livewire\Listings;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -56,6 +56,6 @@ class UpdateListingForm extends Component
 
     public function render()
     {
-        return view('marketplaceful::listings.update-listing-form');
+        return view('marketplaceful::livewire.listings.update-listing-form');
     }
 }

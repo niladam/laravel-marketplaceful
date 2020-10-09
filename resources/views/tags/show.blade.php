@@ -9,11 +9,11 @@
         </x-mkt-page-header>
     </x-slot>
 
-    @livewire('marketplaceful::tags.update-tag-form', ['tag' => $tag])
+    <livewire:marketplaceful::tags.update-tag-form :tag="$tag" />
 
     <x-mkt-section-border />
 
     <div class="mt-10 sm:mt-0">
-        @livewire('marketplaceful::tags.delete-tag-form', ['tag' => $tag])
+        <livewire:marketplaceful::tags.delete-tag-form :tag="$tag" />
     </div>
 </x-mkt-dashboard-layout>

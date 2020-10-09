@@ -17,5 +17,5 @@
         </x-mkt-page-header>
     </x-slot>
 
-    @livewire('marketplaceful::listings.listing-list')
+    <livewire:marketplaceful::listings.listing-list />
 </x-mkt-dashboard-layout>

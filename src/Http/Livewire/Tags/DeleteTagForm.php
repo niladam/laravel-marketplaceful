@@ -1,6 +1,6 @@
 <?php
 
-namespace Marketplaceful\Http\Livewire;
+namespace Marketplaceful\Http\Livewire\Tags;
 
 use Livewire\Component;
 use Marketplaceful\Actions\DeleteTag;
@@ -25,6 +25,6 @@ class DeleteTagForm extends Component
 
     public function render()
     {
-        return view('marketplaceful::tags.delete-tag-form');
+        return view('marketplaceful::livewire.tags.delete-tag-form');
     }
 }

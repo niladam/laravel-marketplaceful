@@ -21,7 +21,7 @@
 
             <x-slot name="content">
                 <div class="-mx-4 -my-5 sm:-m-6 sm:rounded-lg overflow-hidden">
-                    @livewire('marketplaceful::users.user-list', ['users' => $activeUsers])
+                    <livewire:marketplaceful::users.user-list :users="$activeUsers" />
                 </div>
             </x-slot>
         </x-mkt-action-section>
@@ -43,7 +43,7 @@
 
                 <x-slot name="content">
                     <div class="-mx-4 -my-5 sm:-m-6 sm:rounded-lg overflow-hidden">
-                        @livewire('marketplaceful::users.user-list', ['users' => $suspendedUsers])
+                        <livewire:marketplaceful::users.user-list :users="$suspendedUsers" />
                     </div>
                 </x-slot>
             </x-mkt-action-section>
