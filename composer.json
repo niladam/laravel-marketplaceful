@@ -20,6 +20,7 @@
         "illuminate/contracts": "^8.0",
         "laravel/sanctum": "^2.6",
         "livewire/livewire": "^2.0",
+        "pixelfear/composer-dist-plugin": "^0.1.4",
         "radiocubito/laravel-package-tools": "^1.0"
     },
     "require-dev": {
@@ -55,6 +56,10 @@
         "sort-packages": true
     },
     "extra": {
+        "download-dist": {
+            "url": "https://github.com/marketplaceful/laravel-marketplaceful/releases/download/{$version}/dist.tar.gz",
+            "path": "resources/dist"
+        },
         "laravel": {
             "providers": [
                 "Marketplaceful\\MarketplacefulServiceProvider"
