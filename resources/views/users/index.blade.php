@@ -1,4 +1,4 @@
-<x-mkt-dashboard-layout>
+<x-mkt-layouts.dashboard>
     <x-slot name="header">
         <x-mkt-navbar />
 
@@ -49,4 +49,4 @@
             </x-mkt-action-section>
         </div>
     @endif
-</x-mkt-dashboard-layout>
+</x-mkt-layouts.dashboard>

@@ -66,7 +66,6 @@ class MarketplacefulServiceProvider extends ServiceProvider
             $this->registerComponent('button');
             $this->registerComponent('confirmation-modal');
             $this->registerComponent('danger-button');
-            $this->registerComponent('dashboard-layout');
             $this->registerComponent('form-section');
             $this->registerComponent('input-error');
             $this->registerComponent('input');
@@ -84,6 +83,9 @@ class MarketplacefulServiceProvider extends ServiceProvider
             $this->registerComponent('section-title');
             $this->registerComponent('select');
             $this->registerComponent('textarea');
+
+            Blade::component(\Marketplaceful\View\Components\Layouts\Base::class, 'mkt-layouts.base');
+            Blade::component(\Marketplaceful\View\Components\Layouts\Dashboard::class, 'mkt-layouts.dashboard');
         });
     }
 

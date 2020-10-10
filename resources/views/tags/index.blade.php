@@ -1,4 +1,4 @@
-<x-mkt-dashboard-layout>
+<x-mkt-layouts.dashboard>
     <x-slot name="header">
         <x-mkt-navbar />
 
@@ -18,4 +18,4 @@
     </x-slot>
 
     <livewire:marketplaceful::tags.tag-list :tags="$tags" />
-</x-mkt-dashboard-layout>
+</x-mkt-layouts.dashboard>

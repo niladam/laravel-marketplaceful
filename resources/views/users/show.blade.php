@@ -1,4 +1,4 @@
-<x-mkt-dashboard-layout>
+<x-mkt-layouts.dashboard>
     <x-slot name="header">
         <x-mkt-navbar />
 
@@ -30,4 +30,4 @@
     <div class="mt-10 sm:mt-0">
         <livewire:marketplaceful::users.delete-user-form :user="$user" />
     </div>
-</x-mkt-dashboard-layout>
+</x-mkt-layouts.dashboard>
