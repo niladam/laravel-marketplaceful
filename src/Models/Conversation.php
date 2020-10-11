@@ -32,4 +32,9 @@ class Conversation extends Model
     {
         return $this->hasMany(Message::class)->latest();
     }
+
+    public function listing()
+    {
+        return $this->belongsTo(Listing::class);
+    }
 }
