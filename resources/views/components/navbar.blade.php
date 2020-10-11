@@ -5,17 +5,12 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="/dashboard">
+                    <a href="/marketplaceful">
                         <x-mkt-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-mkt-nav-link href="/dashboard" :active="request()->routeIs('dashboard')">
-                        Dashboard
-                    </x-mkt-nav-link>
-                </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-mkt-nav-link href="{{ route('marketplaceful::listings.index') }}" :active="request()->routeIs('marketplaceful::listings.index')">
@@ -51,10 +46,6 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-mkt-responsive-nav-link href="/dashboard" :active="request()->routeIs('dashboard')">
-                Dashboard
-            </x-mkt-responsive-nav-link>
-
             <x-mkt-responsive-nav-link href="{{ route('marketplaceful::listings.index') }}" :active="request()->routeIs('marketplaceful::listings.index')">
                 Listings
             </x-mkt-responsive-nav-link>

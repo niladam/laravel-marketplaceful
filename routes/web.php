@@ -8,6 +8,8 @@ use Marketplaceful\Http\Middleware\UpdateUserLastSeenMiddleware;
 
 Route::group(['middleware' => 'web'], function () {
     Route::group(['middleware' => ['auth', 'verified', Authorize::class, UpdateUserLastSeenMiddleware::class]], function () {
+        Route::get('/marketplaceful', fn () => redirect()->to(route('marketplaceful::listings.index')))->name('marketplaceful::dashboard');
+
         Route::get('/marketplaceful/tags', [TagController::class, 'index'])->name('marketplaceful::tags.index');
         Route::get('/marketplaceful/tags/create', [TagController::class, 'create'])->name('marketplaceful::tags.create');
         Route::get('/marketplaceful/tags/{tag}', [TagController::class, 'show'])->name('marketplaceful::tags.show');
