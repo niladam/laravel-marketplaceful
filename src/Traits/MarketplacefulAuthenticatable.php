@@ -42,6 +42,11 @@ trait MarketplacefulAuthenticatable
         return $this->conversations->contains('id', $id);
     }
 
+    public function hasUnReadConversations()
+    {
+        return $this->conversations()->wherePivot('read_at', null)->count();
+    }
+
     public function hasRead(Conversation $conversation)
     {
         return $this->conversations->find($conversation->id)->pivot->read_at;

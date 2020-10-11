@@ -21,9 +21,15 @@ use Marketplaceful\Http\Livewire\Users\SuspendUserForm;
 use Marketplaceful\Http\Livewire\Users\UnSuspendUserForm;
 use Marketplaceful\Http\Livewire\Users\UpdateUserForm;
 use Marketplaceful\Http\Livewire\Users\UserList;
+use Marketplaceful\Models\Listing;
+use Marketplaceful\Policies\ListingPolicy;
 
 class MarketplacefulServiceProvider extends ServiceProvider
 {
+    protected $policies = [
+        Listing::class => ListingPolicy::class,
+    ];
+
     public function register()
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/marketplaceful.php', 'marketplaceful');

@@ -2,6 +2,7 @@
 
 namespace Marketplaceful\Actions;
 
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Marketplaceful\Models\Conversation;
@@ -10,6 +11,8 @@ class CreateConversation
 {
     public function create($user, $listing, array $input)
     {
+        Gate::forUser($user)->authorize('createConversation', $listing);
+
         Validator::make($input, [
             'body' => 'required',
         ])->validateWithBag('createConversation');

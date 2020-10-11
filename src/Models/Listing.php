@@ -16,6 +16,10 @@ class Listing extends Model
     use Unguarded;
     use HasFeatureImage;
 
+    protected $casts = [
+        'author_id' => 'integer',
+    ];
+
     protected static function newFactory()
     {
         return ListingFactory::new();
@@ -36,6 +40,11 @@ class Listing extends Model
         return $this->belongsToMany(Tag::class, 'listings_tags', 'listing_id', 'tag_id')
             ->withPivot('order_column')
             ->orderBy('order_column', 'asc');
+    }
+
+    public function conversations()
+    {
+        return $this->hasMany(Conversation::class);
     }
 
     public function scopeTag($query, string $slug)
