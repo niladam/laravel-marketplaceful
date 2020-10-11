@@ -4,6 +4,7 @@ namespace Marketplaceful\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Marketplaceful\Database\Factories\ListingFactory;
 use Marketplaceful\Traits\HasFeatureImage;
 use Marketplaceful\Traits\HasSlug;
 use Marketplaceful\Traits\Unguarded;
@@ -14,6 +15,11 @@ class Listing extends Model
     use HasSlug;
     use Unguarded;
     use HasFeatureImage;
+
+    protected static function newFactory()
+    {
+        return ListingFactory::new();
+    }
 
     public function sluggableAttribute()
     {

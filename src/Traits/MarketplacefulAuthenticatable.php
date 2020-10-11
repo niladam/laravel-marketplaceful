@@ -3,12 +3,18 @@
 namespace Marketplaceful\Traits;
 
 use Marketplaceful\Models\Conversation;
+use Marketplaceful\Models\Listing;
 
 trait MarketplacefulAuthenticatable
 {
     public function initializeMarketplacefulAuthenticatable()
     {
         $this->casts['last_seen_at'] = 'datetime';
+    }
+
+    public function listings()
+    {
+        return $this->hasMany(Listing::class, 'author_id');
     }
 
     public function scopeActive($query)
