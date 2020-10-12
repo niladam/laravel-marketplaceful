@@ -62,7 +62,7 @@ class Listing extends Model
     public function markAsPublished()
     {
         $this->update([
-            'published_at' => $this->freshTimestamp(),
+            'published_at' => $this->published_at ?? $this->freshTimestamp(),
             'status' => 'published',
         ]);
     }
