@@ -1,44 +1,68 @@
-# Laravel Marketplace
+# Marketplaceful - Self-host your marketplace software
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/marketplaceful/laravel-marketplaceful.svg?style=flat-square)](https://packagist.org/packages/marketplaceful/laravel-marketplaceful)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/marketplaceful/laravel-marketplaceful/run-tests?label=tests)](https://github.com/marketplaceful/laravel-marketplaceful/actions?query=workflow%3Arun-tests+branch%3Amaster)
 [![Total Downloads](https://img.shields.io/packagist/dt/marketplaceful/laravel-marketplaceful.svg?style=flat-square)](https://packagist.org/packages/marketplaceful/laravel-marketplaceful)
 
-
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
 ## Installation
 
-You can install the package via composer:
+A web platform for quickly building online marketplaces built on Laravel.
 
-```bash
+1. Add the `marketplaceful:install` command to `post-autoload-dump` in `composer.json` .
+
+``` json
+"post-autoload-dump": [
+    "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+    "@php artisan package:discover --ansi",
+    "@php artisan marketplaceful:install --ansi"
+],
+```
+
+2. Require `marketplaceful/laravel-marketplaceful`.
+
+``` bash
 composer require marketplaceful/laravel-marketplaceful
 ```
 
-You can publish and run the migrations with:
+3. Add the `MarketplacefulAuthenticatable` trait to your existing User model:
 
-```bash
-php artisan vendor:publish --provider="Marketplaceful\MarketplacefulServiceProvider" --tag="migrations"
+``` php
+namespace App\Models;
+
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Marketplaceful\Traits\MarketplacefulAuthenticatable;
+
+class User extends Authenticatable {
+
+    use MarketplacefulAuthenticatable;
+
+}
+```
+
+4. Run migrations.
+
+``` bash
 php artisan migrate
 ```
 
-You can publish the config file with:
-```bash
-php artisan vendor:publish --provider="Marketplaceful\MarketplacefulServiceProvider" --tag="config"
-```
+### Dashboard Authorization
+Marketplaceful exposes a dashboard at /marketplaceful. By default, you will only be able to access this dashboard in the local environment. To use it in another environment, you need to register a gate check.
 
-This is the contents of the published config file:
+You can determine which users of your application are allowed to view the Marketplaceful dashboard by defining a gate check called `viewMarketplaceful`.
+
+A common place to register this check is in a service provider:
 
 ```php
-return [
-];
-```
+// in a service provider
 
-## Usage
-
-``` php
-$marketplaceful = new Marketplaceful\Marketplaceful();
-echo $marketplaceful->echoPhrase('Hello, Marketplaceful!');
+public function boot()
+{
+   Gate::define('viewMarketplaceful', function ($user) {
+       return in_array($user->email, [
+            'oliver@radiocubito.com',
+        ]);
+   });
+}
 ```
 
 ## Testing

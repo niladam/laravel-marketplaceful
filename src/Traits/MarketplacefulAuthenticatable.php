@@ -10,6 +10,7 @@ trait MarketplacefulAuthenticatable
     public function initializeMarketplacefulAuthenticatable()
     {
         $this->casts['last_seen_at'] = 'datetime';
+        $this->casts['super'] = 'boolean';
     }
 
     public function listings()
@@ -35,6 +36,11 @@ trait MarketplacefulAuthenticatable
     public function isSuspended()
     {
         return $this->status == 'inactive';
+    }
+
+    public function isSuper()
+    {
+        return $this->super;
     }
 
     public function inConversation($id)
