@@ -32,4 +32,19 @@ class ListingFactory extends Factory
             'published_at' => null,
         ];
     }
+
+    public function published()
+    {
+        return $this->state([
+            'status' => 'published',
+            'published_at' => now(),
+        ]);
+    }
+
+    public function draft()
+    {
+        return $this->state([
+            'status' => 'draft',
+        ]);
+    }
 }

@@ -11,6 +11,8 @@ use Marketplaceful\Console\InstallCommand;
 use Marketplaceful\Http\Livewire\Listings\CreateListingForm;
 use Marketplaceful\Http\Livewire\Listings\DeleteListingForm;
 use Marketplaceful\Http\Livewire\Listings\ListingList;
+use Marketplaceful\Http\Livewire\Listings\PublishListingForm;
+use Marketplaceful\Http\Livewire\Listings\UnPublishListingForm;
 use Marketplaceful\Http\Livewire\Listings\UpdateListingForm;
 use Marketplaceful\Http\Livewire\Tags\CreateTagForm;
 use Marketplaceful\Http\Livewire\Tags\DeleteTagForm;
@@ -42,6 +44,8 @@ class MarketplacefulServiceProvider extends ServiceProvider
             Livewire::component('marketplaceful::listings.listing-list', ListingList::class);
             Livewire::component('marketplaceful::listings.create-listing-form', CreateListingForm::class);
             Livewire::component('marketplaceful::listings.update-listing-form', UpdateListingForm::class);
+            Livewire::component('marketplaceful::listings.publish-listing-form', PublishListingForm::class);
+            Livewire::component('marketplaceful::listings.un-publish-listing-form', UnPublishListingForm::class);
             Livewire::component('marketplaceful::listings.delete-listing-form', DeleteListingForm::class);
             Livewire::component('marketplaceful::users.user-list', UserList::class);
             Livewire::component('marketplaceful::users.update-user-form', UpdateUserForm::class);

@@ -11,6 +11,20 @@
 
     <livewire:marketplaceful::listings.update-listing-form :listing="$listing" />
 
+    @if ($listing->isDraft())
+        <x-mkt-section-border />
+
+        <div class="mt-10 sm:mt-0">
+            <livewire:marketplaceful::listings.publish-listing-form :listing="$listing" />
+        </div>
+    @else
+        <x-mkt-section-border />
+
+        <div class="mt-10 sm:mt-0">
+            <livewire:marketplaceful::listings.un-publish-listing-form :listing="$listing" />
+        </div>
+    @endif
+
     <x-mkt-section-border />
 
     <div class="mt-10 sm:mt-0">

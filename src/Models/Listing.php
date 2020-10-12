@@ -54,6 +54,34 @@ class Listing extends Model
         });
     }
 
+    public function scopePublished($query)
+    {
+        return $query->whereNotNull('published_at');
+    }
+
+    public function markAsPublished()
+    {
+        $this->update([
+            'published_at' => $this->freshTimestamp(),
+            'status' => 'published',
+        ]);
+    }
+
+    public function markAsUnPublished()
+    {
+        $this->update(['status' => 'draft']);
+    }
+
+    public function isPublished()
+    {
+        return $this->status === 'published';
+    }
+
+    public function isDraft()
+    {
+        return $this->status === 'draft';
+    }
+
     public function getPriceForHumansAttribute()
     {
         return number_format($this->price / 100, 2);

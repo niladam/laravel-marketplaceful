@@ -19,6 +19,11 @@ class ListingPolicy
         //
     }
 
+    public function update($user, Listing $listing)
+    {
+        return $listing->author->is($user);
+    }
+
     public function createConversation($user, Listing $listing)
     {
         return $user->id !== $listing->author_id;
