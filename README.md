@@ -4,9 +4,9 @@
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/marketplaceful/laravel-marketplaceful/run-tests?label=tests)](https://github.com/marketplaceful/laravel-marketplaceful/actions?query=workflow%3Arun-tests+branch%3Amaster)
 [![Total Downloads](https://img.shields.io/packagist/dt/marketplaceful/laravel-marketplaceful.svg?style=flat-square)](https://packagist.org/packages/marketplaceful/laravel-marketplaceful)
 
-## Installation
-
 A web platform for quickly building online marketplaces built on Laravel.
+
+## Installation
 
 1. Add the `marketplaceful:install` command to `post-autoload-dump` in `composer.json` .
 
