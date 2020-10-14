@@ -8,6 +8,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 use Livewire\Livewire;
 use Marketplaceful\Console\InstallCommand;
+use Marketplaceful\Console\MakeUser;
 use Marketplaceful\Http\Livewire\Listings\CreateListingForm;
 use Marketplaceful\Http\Livewire\Listings\DeleteListingForm;
 use Marketplaceful\Http\Livewire\Listings\ListingList;
@@ -144,6 +145,7 @@ class MarketplacefulServiceProvider extends ServiceProvider
 
         $this->commands([
             InstallCommand::class,
+            MakeUser::class,
         ]);
     }
 
