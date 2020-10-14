@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="/marketplaceful">
-                        <x-mkt-application-mark class="block h-9 w-auto" />
+                        <x-mkt-application-mark class="block h-6 w-auto" />
                     </a>
                 </div>
 
