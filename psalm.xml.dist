@@ -31,5 +31,10 @@
                 <file name="src/Http/Middleware/UpdateUserLastSeenMiddleware.php" />
             </errorLevel>
         </NoInterfaceProperties>
+        <UndefinedMethod>
+            <errorLevel type="info">
+                <referencedMethod name="Illuminate\Config\Repository::create" />
+            </errorLevel>
+        </UndefinedMethod>
     </issueHandlers>
 <plugins><pluginClass class="Psalm\LaravelPlugin\Plugin"/></plugins></psalm>
