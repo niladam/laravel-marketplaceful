@@ -11,6 +11,6 @@ class ConversationPolicy
 
     public function show($user, Conversation $conversation)
     {
-        return $user->inConversation($conversation->id);
+        return $user->belongsToConversation($conversation);
     }
 }

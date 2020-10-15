@@ -5,9 +5,9 @@ namespace Marketplaceful\Traits;
 use Marketplaceful\Models\Conversation;
 use Marketplaceful\Models\Listing;
 
-trait MarketplacefulAuthenticatable
+trait InteractsAsMarketplaceUser
 {
-    public function initializeMarketplacefulAuthenticatable()
+    public function initializeInteractsAsMarketplaceUser()
     {
         $this->casts['last_seen_at'] = 'datetime';
         $this->casts['super'] = 'boolean';
@@ -43,9 +43,9 @@ trait MarketplacefulAuthenticatable
         return $this->super;
     }
 
-    public function inConversation($id)
+    public function belongsToConversation($conversation)
     {
-        return $this->conversations->contains('id', $id);
+        return $this->conversations->contains('id', $conversation->id);
     }
 
     public function hasUnReadConversations()

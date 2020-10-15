@@ -24,17 +24,17 @@ A web platform for quickly building online marketplaces built on Laravel.
 composer require marketplaceful/laravel-marketplaceful
 ```
 
-3. Add the `MarketplacefulAuthenticatable` trait to your existing User model:
+3. Add the `InteractsAsMarketplaceUser` trait to your existing User model:
 
 ``` php
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Marketplaceful\Traits\MarketplacefulAuthenticatable;
+use Marketplaceful\Traits\InteractsAsMarketplaceUser;
 
 class User extends Authenticatable {
 
-    use MarketplacefulAuthenticatable;
+    use InteractsAsMarketplaceUser;
 
 }
 ```
