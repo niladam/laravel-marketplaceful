@@ -48,12 +48,12 @@ trait InteractsAsMarketplaceUser
         return $this->conversations->contains('id', $conversation->id);
     }
 
-    public function hasUnReadConversations()
+    public function unreadConversations()
     {
-        return $this->conversations()->wherePivot('read_at', null)->count();
+        return $this->conversations()->wherePivot('read_at', null);
     }
 
-    public function hasRead(Conversation $conversation)
+    public function hasReadConversation(Conversation $conversation)
     {
         return $this->conversations->find($conversation->id)->pivot->read_at;
     }
@@ -70,5 +70,10 @@ trait InteractsAsMarketplaceUser
         }
 
         return $this->name;
+    }
+
+    public function ownsMessage($message)
+    {
+        return $message->user->id === $this->id;
     }
 }

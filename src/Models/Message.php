@@ -11,11 +11,6 @@ class Message extends Model
     use HasFactory;
     use Unguarded;
 
-    public function isOwn()
-    {
-        return $this->user->id === auth()->id();
-    }
-
     public function conversation()
     {
         return $this->belongsTo(Conversation::class);

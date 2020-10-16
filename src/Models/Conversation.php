@@ -23,7 +23,7 @@ class Conversation extends Model
             ->oldest();
     }
 
-    public function others()
+    public function usersExceptCurrentUser()
     {
         return $this->users()->where('user_id', '!=', auth()->id());
     }

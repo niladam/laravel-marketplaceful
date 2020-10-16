@@ -21,7 +21,7 @@ class ReplyConversation
             'last_message_at' => now(),
         ]);
 
-        foreach ($conversation->others as $user) {
+        foreach ($conversation->usersExceptCurrentUser as $user) {
             $user->conversations()->updateExistingPivot($conversation, [
                 'read_at' => null,
             ]);
