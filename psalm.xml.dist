@@ -37,4 +37,4 @@
             </errorLevel>
         </UndefinedMethod>
     </issueHandlers>
-<plugins><pluginClass class="Psalm\LaravelPlugin\Plugin"/></plugins></psalm>
+</psalm>
