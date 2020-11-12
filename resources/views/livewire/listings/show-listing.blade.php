@@ -27,6 +27,10 @@
 
     <x-mkt-section-border />
 
+    <livewire:marketplaceful::listings.update-listing-metadata-form :listing="$listing" />
+
+    <x-mkt-section-border />
+
     <div class="mt-10 sm:mt-0">
         <livewire:marketplaceful::listings.delete-listing-form :listing="$listing" />
     </div>

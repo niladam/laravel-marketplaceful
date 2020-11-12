@@ -16,12 +16,16 @@ class CreateListing
             'description' => ['nullable', 'string', 'max:1000000000'],
             'image' => ['nullable', 'image', 'max:1024'],
             'photos' => ['nullable', 'array'],
-            'photos.*.source' => ['required', 'string'],
-            'photos.*.origin' => ['required', Rule::in([1, 3])],
+            'photos.*.source' => ['required_with:photos', 'string'],
+            'photos.*.origin' => ['required_with:photos', Rule::in([1, 3])],
             'uploads' => ['nullable', 'array'],
             'uploads.*' => ['nullable', 'image', 'max:1024'],
             'tags' => ['nullable', 'array'],
             'tags.*' => ['nullable', 'exists:tags,id'],
+            'location' => ['nullable', 'array'],
+            'location.address' => ['required_with:location', 'string'],
+            'location.longitude' => ['required_with:location', 'numeric', 'between:-180,180'],
+            'location.latitude' => ['required_with:location', 'numeric', 'between:-90,90'],
         ])->validateWithBag('createTag');
 
         $listing = Listing::create([
@@ -30,6 +34,10 @@ class CreateListing
             'description' => $input['description'] ?? null,
             'price_for_editing' => $input['price'] ?? null,
         ]);
+
+        if (isset($input['location'])) {
+            $listing->updateLocation($input['location']);
+        }
 
         if (isset($input['image'])) {
             $listing->updateFeatureImage($input['image']);

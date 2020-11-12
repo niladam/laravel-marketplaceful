@@ -23,6 +23,8 @@ class CreateListingsTable extends Migration
             $table->text('feature_image_path')->nullable();
             $table->string('status', 50)->default('draft');
             $table->dateTime('published_at')->nullable();
+            $table->text('location_coordinates')->nullable();
+            $table->point('location_geometry', 4326)->nullable();
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ namespace Marketplaceful\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Marketplaceful\Database\Factories\ListingFactory;
 use Marketplaceful\Traits\HasFeatureImage;
 use Marketplaceful\Traits\HasPhotos;
@@ -40,6 +41,7 @@ class Listing extends Model
         'public_metadata' => 'array',
         'private_metadata' => 'array',
         'internal_metadata' => 'array',
+        'location_coordinates' => 'array',
     ];
 
     protected static function newFactory()
@@ -146,5 +148,38 @@ class Listing extends Model
     public function getInternalMetadataAttribute()
     {
         return SchemalessAttributes::createForModel($this, 'internal_metadata');
+    }
+
+    public function setLocationAttribute(array $coordinates)
+    {
+        $this->location_coordinates = [
+            'longitude', $coordinates['longitude'],
+            'latitude', $coordinates['latitude'],
+        ];
+
+        $this->location_geometry = (function () use ($coordinates) {
+            if (config('database.default') === 'mysql') {
+                return DB::raw('ST_SRID(Point('.$coordinates['longitude'].', '.$coordinates['latitude'].'), 4326)');
+            }
+
+            if (config('database.default') === 'sqlite') {
+                throw new \Exception('Listing location does not support SQLite.');
+            }
+
+            if (config('database.default') === 'pgsql') {
+                return DB::raw('ST_MakePoint('.$coordinates['longitude'].', '.$coordinates['latitude'].')');
+            }
+        })();
+    }
+
+    public function updateLocation(array $location)
+    {
+        $this->forceFill([
+            'location' => $location,
+        ])->save();
+
+        $this->public_metadata->set([
+            'location' => ['address' => $location['address']],
+        ]);
     }
 }

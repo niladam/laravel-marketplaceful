@@ -9,8 +9,8 @@ class ShowUsers extends Component
 {
     use WithPagination;
 
-    public $sortField;
-    public $sortDirection = 'asc';
+    public $sortField = 'created_at';
+    public $sortDirection = 'desc';
     public $filters = [
         'search' => '',
         'status' => '',

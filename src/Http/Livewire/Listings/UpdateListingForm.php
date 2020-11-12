@@ -26,13 +26,18 @@ class UpdateListingForm extends Component
 
     public $currentTags = [];
 
+    public $location;
+
     public function mount($listing)
     {
         $this->listing = $listing;
 
-        $this->state = $listing->withoutRelations()->toArray();
-
-        $this->state['price'] = $listing->priceForHumans;
+        $this->state = [
+            'title' => $listing->title,
+            'feature_image_path' => $listing->feature_image_path,
+            'description' => $listing->description,
+            'price' => $listing->priceForHumans,
+        ];
 
         $this->currentTags = $listing->tags->pluck('id')->toArray();
 
@@ -50,6 +55,7 @@ class UpdateListingForm extends Component
                 ->merge(['uploads' => $this->uploads])
                 ->merge(['tags' => $this->currentTags])
                 ->when($this->image, fn ($state) => $state->merge(['image' => $this->image]))
+                ->when($this->location, fn ($state) => $state->merge(['location' => $this->location]))
                 ->when(isset($this->photos), fn ($state) => $state->merge(['photos' => $this->photos]))
                 ->toArray()
         );

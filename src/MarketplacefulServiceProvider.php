@@ -18,6 +18,7 @@ use Marketplaceful\Http\Livewire\Listings\ShowListing;
 use Marketplaceful\Http\Livewire\Listings\ShowListings;
 use Marketplaceful\Http\Livewire\Listings\UnPublishListingForm;
 use Marketplaceful\Http\Livewire\Listings\UpdateListingForm;
+use Marketplaceful\Http\Livewire\Listings\UpdateListingMetadataForm;
 use Marketplaceful\Http\Livewire\Listings\UpdateListingSettingsForm;
 use Marketplaceful\Http\Livewire\Tags\CreateTagForm;
 use Marketplaceful\Http\Livewire\Tags\DeleteTagForm;
@@ -55,6 +56,7 @@ class MarketplacefulServiceProvider extends ServiceProvider
             Livewire::component('marketplaceful::listings.create-listing-form', CreateListingForm::class);
             Livewire::component('marketplaceful::listings.update-listing-form', UpdateListingForm::class);
             Livewire::component('marketplaceful::listings.update-listing-settings-form', UpdateListingSettingsForm::class);
+            Livewire::component('marketplaceful::listings.update-listing-metadata-form', UpdateListingMetadataForm::class);
             Livewire::component('marketplaceful::listings.publish-listing-form', PublishListingForm::class);
             Livewire::component('marketplaceful::listings.un-publish-listing-form', UnPublishListingForm::class);
             Livewire::component('marketplaceful::listings.delete-listing-form', DeleteListingForm::class);
@@ -126,6 +128,7 @@ class MarketplacefulServiceProvider extends ServiceProvider
 
             $this->registerComponent('input.checkbox');
             $this->registerComponent('input.filepond');
+            $this->registerComponent('input.location');
 
             Blade::component(\Marketplaceful\View\Components\Layouts\Base::class, 'mkt-layouts.base');
             Blade::component(\Marketplaceful\View\Components\Layouts\Dashboard::class, 'mkt-layouts.dashboard');

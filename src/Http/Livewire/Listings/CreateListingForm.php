@@ -22,6 +22,8 @@ class CreateListingForm extends Component
 
     public $tags;
 
+    public $location;
+
     public $currentTags = [];
 
     public function createListing(CreateListing $creator)
@@ -34,6 +36,7 @@ class CreateListingForm extends Component
                 ->merge(['uploads' => $this->uploads])
                 ->merge(['tags' => $this->currentTags])
                 ->when($this->image, fn ($state) => $state->merge(['image' => $this->image]))
+                ->when($this->location, fn ($state) => $state->merge(['location' => $this->location]))
                 ->when(isset($this->photos), fn ($state) => $state->merge(['photos' => $this->photos]))
                 ->toArray()
         );
