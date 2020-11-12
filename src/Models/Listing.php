@@ -27,13 +27,6 @@ class Listing extends Model
         'closed' => 'Closed',
     ];
 
-    const STATUSES = [
-        'draft' => 'Draft',
-        'pending_approval' => 'Pending Approval',
-        'published' => 'Published',
-        'closed' => 'Closed',
-    ];
-
     protected $casts = [
         'author_id' => 'integer',
         'featured' => 'boolean',
