@@ -33,7 +33,7 @@ class UpdateListing
         $listing->forceFill([
             'title' => $input['title'],
             'description' => $input['description'],
-            'price_for_computers' => $input['price'] ?? null,
+            'price_for_editing' => $input['price'] ?? null,
         ])->save();
     }
 }

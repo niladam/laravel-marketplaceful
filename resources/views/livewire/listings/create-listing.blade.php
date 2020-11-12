@@ -3,7 +3,7 @@
         <x-mkt-navbar />
 
         <x-mkt-page-header>
-            <h1 class="text-lg leading-6 font-semibold text-gray-900">
+            <h1 class="text-2xl font-semibold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
                 Create Listing
             </h1>
         </x-mkt-page-header>

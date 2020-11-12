@@ -7,19 +7,26 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 use Livewire\Livewire;
+use Marketplaceful\Actions\CreateTag;
 use Marketplaceful\Console\InstallCommand;
 use Marketplaceful\Console\MakeUser;
+use Marketplaceful\Http\Livewire\Listings\CreateListing;
 use Marketplaceful\Http\Livewire\Listings\CreateListingForm;
 use Marketplaceful\Http\Livewire\Listings\DeleteListingForm;
-use Marketplaceful\Http\Livewire\Listings\ListingList;
 use Marketplaceful\Http\Livewire\Listings\PublishListingForm;
+use Marketplaceful\Http\Livewire\Listings\ShowListing;
+use Marketplaceful\Http\Livewire\Listings\ShowListings;
 use Marketplaceful\Http\Livewire\Listings\UnPublishListingForm;
 use Marketplaceful\Http\Livewire\Listings\UpdateListingForm;
+use Marketplaceful\Http\Livewire\Listings\UpdateListingSettingsForm;
 use Marketplaceful\Http\Livewire\Tags\CreateTagForm;
 use Marketplaceful\Http\Livewire\Tags\DeleteTagForm;
-use Marketplaceful\Http\Livewire\Tags\TagList;
+use Marketplaceful\Http\Livewire\Tags\ShowTag;
+use Marketplaceful\Http\Livewire\Tags\ShowTags;
 use Marketplaceful\Http\Livewire\Tags\UpdateTagForm;
 use Marketplaceful\Http\Livewire\Users\DeleteUserForm;
+use Marketplaceful\Http\Livewire\Users\ShowUser;
+use Marketplaceful\Http\Livewire\Users\ShowUsers;
 use Marketplaceful\Http\Livewire\Users\SuspendUserForm;
 use Marketplaceful\Http\Livewire\Users\UnSuspendUserForm;
 use Marketplaceful\Http\Livewire\Users\UpdateUserForm;
@@ -38,21 +45,30 @@ class MarketplacefulServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/marketplaceful.php', 'marketplaceful');
 
         $this->app->afterResolving(BladeCompiler::class, function () {
-            Livewire::component('marketplaceful::tags.tag-list', TagList::class);
+            Livewire::component('marketplaceful::tags.show-tags', ShowTags::class);
+            Livewire::component('marketplaceful::tags.create-tag', CreateTag::class);
             Livewire::component('marketplaceful::tags.create-tag-form', CreateTagForm::class);
+            Livewire::component('marketplaceful::tags.show-tag', ShowTag::class);
             Livewire::component('marketplaceful::tags.update-tag-form', UpdateTagForm::class);
             Livewire::component('marketplaceful::tags.delete-tag-form', DeleteTagForm::class);
-            Livewire::component('marketplaceful::listings.listing-list', ListingList::class);
+
             Livewire::component('marketplaceful::listings.create-listing-form', CreateListingForm::class);
             Livewire::component('marketplaceful::listings.update-listing-form', UpdateListingForm::class);
+            Livewire::component('marketplaceful::listings.update-listing-settings-form', UpdateListingSettingsForm::class);
             Livewire::component('marketplaceful::listings.publish-listing-form', PublishListingForm::class);
             Livewire::component('marketplaceful::listings.un-publish-listing-form', UnPublishListingForm::class);
             Livewire::component('marketplaceful::listings.delete-listing-form', DeleteListingForm::class);
+            Livewire::component('marketplaceful::listings.show-listings', ShowListings::class);
+            Livewire::component('marketplaceful::listings.show-listing', ShowListing::class);
+            Livewire::component('marketplaceful::listings.create-listing', CreateListing::class);
+
             Livewire::component('marketplaceful::users.user-list', UserList::class);
             Livewire::component('marketplaceful::users.update-user-form', UpdateUserForm::class);
             Livewire::component('marketplaceful::users.delete-user-form', DeleteUserForm::class);
             Livewire::component('marketplaceful::users.suspend-user-form', SuspendUserForm::class);
             Livewire::component('marketplaceful::users.un-suspend-user-form', UnSuspendUserForm::class);
+            Livewire::component('marketplaceful::users.show-user', ShowUser::class);
+            Livewire::component('marketplaceful::users.show-users', ShowUsers::class);
         });
     }
 
@@ -94,6 +110,21 @@ class MarketplacefulServiceProvider extends ServiceProvider
             $this->registerComponent('section-title');
             $this->registerComponent('select');
             $this->registerComponent('textarea');
+            $this->registerComponent('status-badge');
+
+            $this->registerComponent('table');
+            $this->registerComponent('table.cell');
+            $this->registerComponent('table.heading');
+            $this->registerComponent('table.row');
+
+            $this->registerComponent('dropdown');
+            $this->registerComponent('dropdown.link');
+
+            $this->registerComponent('icon.cog');
+
+            $this->registerComponent('button.secondary');
+
+            $this->registerComponent('input.checkbox');
 
             Blade::component(\Marketplaceful\View\Components\Layouts\Base::class, 'mkt-layouts.base');
             Blade::component(\Marketplaceful\View\Components\Layouts\Dashboard::class, 'mkt-layouts.dashboard');

@@ -8,6 +8,7 @@ use Marketplaceful\Database\Factories\ListingFactory;
 use Marketplaceful\Traits\HasFeatureImage;
 use Marketplaceful\Traits\HasSlug;
 use Marketplaceful\Traits\Unguarded;
+use Spatie\SchemalessAttributes\SchemalessAttributes;
 
 class Listing extends Model
 {
@@ -16,8 +17,19 @@ class Listing extends Model
     use Unguarded;
     use HasFeatureImage;
 
+    const STATUSES = [
+        'draft' => 'Draft',
+        'pending_approval' => 'Pending Approval',
+        'published' => 'Published',
+        'closed' => 'Closed',
+    ];
+
     protected $casts = [
         'author_id' => 'integer',
+        'featured' => 'boolean',
+        'public_metadata' => 'array',
+        'private_metadata' => 'array',
+        'internal_metadata' => 'array',
     ];
 
     protected static function newFactory()
@@ -87,12 +99,42 @@ class Listing extends Model
         return number_format($this->price / 100, 2);
     }
 
-    public function setPriceForComputersAttribute($value)
+    public function setPriceForEditingAttribute($value)
     {
         $value = str_replace(',', '.', $value);
 
         $price = number_format(floatval($value) * 100, 0, '', '');
 
         $this->price = $price;
+    }
+
+    public function getStatusColorAttribute()
+    {
+        return [
+            'draft' => 'pink',
+            'pending_approval' => 'green',
+            'published' => 'gray',
+            'closed' => 'red',
+        ][$this->status] ?? 'gray';
+    }
+
+    public function getStatusLabelAttribute()
+    {
+        return self::STATUSES[$this->status] ?? '';
+    }
+
+    public function getPublicMetadataAttribute()
+    {
+        return SchemalessAttributes::createForModel($this, 'public_metadata');
+    }
+
+    public function getPrivateMetadataAttribute()
+    {
+        return SchemalessAttributes::createForModel($this, 'private_metadata');
+    }
+
+    public function getInternalMetadataAttribute()
+    {
+        return SchemalessAttributes::createForModel($this, 'internal_metadata');
     }
 }

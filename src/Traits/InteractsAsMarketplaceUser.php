@@ -7,6 +7,14 @@ use Marketplaceful\Models\Listing;
 
 trait InteractsAsMarketplaceUser
 {
+    public static function statuses()
+    {
+        return [
+            'active' => 'Active',
+            'inactive' => 'Inactive',
+        ];
+    }
+
     public function initializeInteractsAsMarketplaceUser()
     {
         $this->casts['last_seen_at'] = 'datetime';
@@ -75,5 +83,18 @@ trait InteractsAsMarketplaceUser
     public function ownsMessage($message)
     {
         return $message->user->id === $this->id;
+    }
+
+    public function getStatusColorAttribute()
+    {
+        return [
+            'active' => 'gray',
+            'inactive' => 'red',
+        ][$this->status] ?? 'gray';
+    }
+
+    public function getStatusLabelAttribute()
+    {
+        return self::statuses()[$this->status] ?? '';
     }
 }

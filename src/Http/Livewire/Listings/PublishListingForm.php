@@ -11,8 +11,6 @@ class PublishListingForm extends Component
 {
     public Listing $listing;
 
-    public $confirmingListingPublication = false;
-
     public function publishListing(PublishListing $publisher)
     {
         $publisher->publish(Auth::user(), $this->listing);

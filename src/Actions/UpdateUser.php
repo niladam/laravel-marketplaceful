@@ -2,6 +2,7 @@
 
 namespace Marketplaceful\Actions;
 
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 

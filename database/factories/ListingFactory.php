@@ -4,6 +4,7 @@ namespace Marketplaceful\Database\Factories;
 
 use App\Models\Model;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
 use Marketplaceful\Models\Listing;
 
 class ListingFactory extends Factory
@@ -28,9 +29,23 @@ class ListingFactory extends Factory
             'description' => $this->faker->paragraph,
             'price' => null,
             'feature_image_path' => null,
-            'status' => 'draft',
+            'status' => Arr::random(collect(Listing::STATUSES)->keys()->toArray()),
             'published_at' => null,
         ];
+    }
+
+    public function draft()
+    {
+        return $this->state([
+            'status' => 'draft',
+        ]);
+    }
+
+    public function pendingApproval()
+    {
+        return $this->state([
+            'status' => 'pending_approval',
+        ]);
     }
 
     public function published()
@@ -41,10 +56,10 @@ class ListingFactory extends Factory
         ]);
     }
 
-    public function draft()
+    public function closed()
     {
         return $this->state([
-            'status' => 'draft',
+            'status' => 'closed',
         ]);
     }
 }

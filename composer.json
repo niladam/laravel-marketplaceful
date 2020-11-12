@@ -21,7 +21,8 @@
         "laravel/sanctum": "^2.6",
         "livewire/livewire": "^2.0",
         "pixelfear/composer-dist-plugin": "^0.1.4",
-        "radiocubito/laravel-package-tools": "^1.0"
+        "radiocubito/laravel-package-tools": "^1.0",
+        "spatie/laravel-schemaless-attributes": "^1.8"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.8",

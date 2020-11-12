@@ -11,8 +11,6 @@ class UnPublishListingForm extends Component
 {
     public Listing $listing;
 
-    public $confirmingListingUnPublication = false;
-
     public function unPublishListing(UnPublishListing $unPublisher)
     {
         $unPublisher->unPublish(Auth::user(), $this->listing);

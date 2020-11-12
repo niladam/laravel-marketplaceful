@@ -22,7 +22,7 @@ class CreateListing
             'author_id' => $user->id,
             'title' => $input['title'],
             'description' => $input['description'] ?? null,
-            'price_for_computers' => $input['price'] ?? null,
+            'price_for_editing' => $input['price'] ?? null,
         ]);
 
         if (isset($input['image'])) {
