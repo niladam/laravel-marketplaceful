@@ -76,9 +76,9 @@
             <x-mkt-input-error for="photos.*" class="mt-2" />
         </div>
 
-        <div class="col-span-6">
+        <div class="col-span-4">
             <x-mkt-label for="location" value="Location" />
-            <x-mkt-input.location id="location" wire:model.defer="location" :address="$listing->public_metadata->location['address'] ?? null" />
+            <x-mkt-input.location id="location" class="mt-1 block w-full" wire:model.defer="location" :address="$listing->public_metadata->location['address'] ?? null" />
             <x-mkt-input-error for="location.*" class="mt-2" />
         </div>
 

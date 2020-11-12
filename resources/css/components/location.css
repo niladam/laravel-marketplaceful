@@ -1,0 +1,15 @@
+.mapboxgl-ctrl-geocoder {
+    @apply shadow-none min-w-full;
+}
+
+.mapboxgl-ctrl-geocoder--input {
+    @apply h-auto form-input pl-3 pr-8 border-solid;
+}
+
+.mapboxgl-ctrl-geocoder--icon-search {
+    @apply hidden;
+}
+
+.mapboxgl-ctrl-geocoder--icon-close {
+    @apply mt-1.5;
+}

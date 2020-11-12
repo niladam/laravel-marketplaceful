@@ -1,4 +1,5 @@
 @props(['address' => '', 'id'])
+
 <div
     wire:ignore
     x-data="
@@ -22,7 +23,7 @@
 }
 "
     x-init="initMapbox()"
-    {{ $attributes->whereDoesntStartWith('wire:model') }}
     id="{{ $id }}"
+    {{ $attributes->whereDoesntStartWith('wire:model')->merge(['class' => 'rounded-md shadow-sm']) }}
 >
 </div>
