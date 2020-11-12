@@ -11,7 +11,13 @@
         <link rel="stylesheet" href="{{ asset('vendor/marketplaceful/dashboard/css/dashboard.css') }}">
 
         @livewireStyles
-
+        <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+        <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
+        <style>
+            .filepond--item {
+    width: calc(50% - .5em);
+}
+        </style>
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.js" defer></script>
     </head>
@@ -19,5 +25,7 @@
         {{ $slot }}
 
         @livewireScripts
+        <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+        <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
     </body>
 </html>

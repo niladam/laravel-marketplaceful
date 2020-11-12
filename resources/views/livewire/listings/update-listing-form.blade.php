@@ -68,6 +68,15 @@
         </div>
 
         <div class="col-span-6">
+            <x-mkt-label for="photos.*" value="Photos" />
+
+            <x-mkt-input.filepond wire:model="uploads" :files="$listing->photos_for_filepond" class="mt-2" multiple />
+
+            <x-mkt-input-error for="uploads.*" class="mt-2" />
+            <x-mkt-input-error for="photos.*" class="mt-2" />
+        </div>
+
+        <div class="col-span-6">
             <x-mkt-label for="description" value="Description" />
             <x-mkt-textarea id="description" rows="3" class="mt-1 block w-full" wire:model.defer="state.description" />
             <x-mkt-input-error for="description" class="mt-2" />

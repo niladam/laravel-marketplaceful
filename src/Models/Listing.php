@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Marketplaceful\Database\Factories\ListingFactory;
 use Marketplaceful\Traits\HasFeatureImage;
+use Marketplaceful\Traits\HasPhotos;
 use Marketplaceful\Traits\HasSlug;
 use Marketplaceful\Traits\Unguarded;
 use Spatie\SchemalessAttributes\SchemalessAttributes;
@@ -16,6 +17,14 @@ class Listing extends Model
     use HasSlug;
     use Unguarded;
     use HasFeatureImage;
+    use HasPhotos;
+
+    const STATUSES = [
+        'draft' => 'Draft',
+        'pending_approval' => 'Pending Approval',
+        'published' => 'Published',
+        'closed' => 'Closed',
+    ];
 
     const STATUSES = [
         'draft' => 'Draft',
@@ -27,6 +36,7 @@ class Listing extends Model
     protected $casts = [
         'author_id' => 'integer',
         'featured' => 'boolean',
+        'photo_paths' => 'array',
         'public_metadata' => 'array',
         'private_metadata' => 'array',
         'internal_metadata' => 'array',

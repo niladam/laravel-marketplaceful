@@ -125,6 +125,7 @@ class MarketplacefulServiceProvider extends ServiceProvider
             $this->registerComponent('button.secondary');
 
             $this->registerComponent('input.checkbox');
+            $this->registerComponent('input.filepond');
 
             Blade::component(\Marketplaceful\View\Components\Layouts\Base::class, 'mkt-layouts.base');
             Blade::component(\Marketplaceful\View\Components\Layouts\Dashboard::class, 'mkt-layouts.dashboard');

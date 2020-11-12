@@ -16,6 +16,10 @@ class CreateListingForm extends Component
 
     public $image;
 
+    public $uploads = [];
+
+    public $photos;
+
     public $tags;
 
     public $currentTags = [];
@@ -26,9 +30,12 @@ class CreateListingForm extends Component
 
         $creator->create(
             Auth::user(),
-            $this->image
-                ? array_merge($this->state, ['image' => $this->image, 'tags' => $this->currentTags])
-                : array_merge($this->state, ['tags' => $this->currentTags]),
+            collect($this->state)
+                ->merge(['uploads' => $this->uploads])
+                ->merge(['tags' => $this->currentTags])
+                ->when($this->image, fn ($state) => $state->merge(['image' => $this->image]))
+                ->when(isset($this->photos), fn ($state) => $state->merge(['photos' => $this->photos]))
+                ->toArray()
         );
 
         return redirect(route('marketplaceful::listings.index'));
