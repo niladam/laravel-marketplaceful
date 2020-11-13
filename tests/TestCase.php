@@ -7,6 +7,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Marketplaceful\MarketplacefulServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
+use Spatie\SchemalessAttributes\SchemalessAttributesServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -23,6 +24,7 @@ class TestCase extends Orchestra
     {
         return [
             MarketplacefulServiceProvider::class,
+            SchemalessAttributesServiceProvider::class,
         ];
     }
 
