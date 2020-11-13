@@ -165,6 +165,10 @@ class MarketplacefulServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../resources/dist' => public_path('vendor/marketplaceful/dashboard'),
         ], 'marketplaceful-dashboard');
+
+        $this->publishes([
+            __DIR__.'/../stubs/Providers/MarketplacefulServiceProvider.stub.php' => app_path('Providers/MarketplacefulServiceProvider.php'),
+        ], 'marketplaceful-providers');
     }
 
     protected function configureRoutes()
