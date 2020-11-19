@@ -18,6 +18,7 @@
     "require": {
         "php": "^7.4",
         "illuminate/contracts": "^8.0",
+        "laravel/fortify": "^1.7",
         "laravel/sanctum": "^2.6",
         "livewire/livewire": "^2.0",
         "pixelfear/composer-dist-plugin": "^0.1.4",

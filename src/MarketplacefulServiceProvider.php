@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
+use Laravel\Fortify\Fortify;
 use Livewire\Livewire;
 use Marketplaceful\Actions\CreateTag;
 use Marketplaceful\Console\InstallCommand;
@@ -78,6 +79,10 @@ class MarketplacefulServiceProvider extends ServiceProvider
     {
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'marketplaceful');
 
+        if (Features::enabled(Features::authentication())) {
+            Fortify::viewPrefix('marketplaceful::auth.');
+        }
+
         $this->configureComponents();
         $this->configurePublishing();
         $this->configureRoutes();
@@ -114,6 +119,10 @@ class MarketplacefulServiceProvider extends ServiceProvider
             $this->registerComponent('textarea');
             $this->registerComponent('status-badge');
 
+            $this->registerComponent('authentication-card');
+            $this->registerComponent('authentication-card-logo');
+            $this->registerComponent('validation-errors');
+
             $this->registerComponent('table');
             $this->registerComponent('table.cell');
             $this->registerComponent('table.heading');
@@ -132,6 +141,7 @@ class MarketplacefulServiceProvider extends ServiceProvider
 
             Blade::component(\Marketplaceful\View\Components\Layouts\Base::class, 'mkt-layouts.base');
             Blade::component(\Marketplaceful\View\Components\Layouts\Dashboard::class, 'mkt-layouts.dashboard');
+            Blade::component(\Marketplaceful\View\Components\Layouts\Guest::class, 'mkt-layouts.guest');
         });
     }
 
@@ -165,6 +175,10 @@ class MarketplacefulServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../resources/dist' => public_path('vendor/marketplaceful/dashboard'),
         ], 'marketplaceful-dashboard');
+
+        $this->publishes([
+            __DIR__.'/../stubs/Providers/MarketplacefulServiceProvider.stub.php' => app_path('Providers/MarketplacefulServiceProvider.php'),
+        ], 'marketplaceful-providers');
     }
 
     protected function configureRoutes()
