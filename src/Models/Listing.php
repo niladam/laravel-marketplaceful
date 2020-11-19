@@ -89,6 +89,17 @@ class Listing extends Model
         $this->update(['status' => 'draft']);
     }
 
+    public function updateLocation(array $location)
+    {
+        $this->forceFill([
+            'location' => $location,
+        ])->save();
+
+        $this->public_metadata->set([
+            'location' => ['address' => $location['address']],
+        ]);
+    }
+
     public function isPublished()
     {
         return $this->status === 'published';
@@ -163,16 +174,5 @@ class Listing extends Model
                 return DB::raw('ST_MakePoint('.$coordinates['longitude'].', '.$coordinates['latitude'].')');
             }
         })();
-    }
-
-    public function updateLocation(array $location)
-    {
-        $this->forceFill([
-            'location' => $location,
-        ])->save();
-
-        $this->public_metadata->set([
-            'location' => ['address' => $location['address']],
-        ]);
     }
 }
